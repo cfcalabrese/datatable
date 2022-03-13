@@ -7,24 +7,23 @@
 </template>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@200&display=swap');
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-
-nav {
+body {
+  font-family: 'mukta', sans-serif;
+}
+.container {
+  max-width: 1800px;
+  margin: 30px auto;
+  overflow-y: scroll;
+  min-height: 500px;
+  border: 1px solid steelblue;
   padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
+  border-radius: 5px;
+  align-content: center;
 }
 </style>

@@ -1,18 +1,35 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="container">
+    <DataTable/>
+    <br>
+    <!-- <SubmitButton /> -->
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import DataTable from '@/components/DataTable'
+import NewRowButton from '../components/NewRowButton'
+import SubmitButton from '../components/SubmitButton'
+import NewRow from '../components/NewRow'
 
 export default {
   name: 'HomeView',
+  data () {
+    return {
+      showAddRow: false
+    }
+  },
   components: {
-    HelloWorld
+    DataTable,
+    NewRowButton,
+    SubmitButton,
+    NewRow
+  },
+  methods: {
+    toggleAddRow () {
+      this.showAddRow = !this.showAddRow
+    }
   }
 }
 </script>
