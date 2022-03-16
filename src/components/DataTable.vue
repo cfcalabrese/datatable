@@ -44,7 +44,8 @@ export default {
     data () {
         return {
             showAddRow: false,
-            approvals: []
+            approvals: [],
+            editedRow: this.editedRow
         }
     },
     methods: {
@@ -54,24 +55,36 @@ export default {
         addRow (newRow) {
             this.approvals = [...this.approvals, newRow]
         },
-        deleteRow (id, approval_type, end_date) {
+        deleteRow (uuid) {
             if(confirm('Are you sure you want to delete this row?')) {
-                this.approvals = this.approvals.filter(
-                    (approval) => (
-                        approval.id !== id ||
-                        approval.approvalType !== approval_type ||
-                        approval.startDate !== end_date
-                    )
+                this.approvals = this.approvals.filter((approval) => 
+                    (approval.uuid !== uuid)
                 )
             }
         },
-        editRow () {
-            console.log('edit row')
+        editRow (editedRow) {           
+            this.approvals.map((approval) => {
+                if (approval.uuid === editedRow.uuid) {
+                    approval.id = editedRow.id,
+                    approval.garageName = editedRow.garageName,
+                    approval.approvalType = editedRow.approvalType,
+                    approval.approvalSubType = editedRow.approvalSubType,
+                    approval.startDate = editedRow.startDate,
+                    approval.endDate = editedRow.endDate
+                }
+            })
+
+            console.log(this.approvals)
+
+            //     )
+            // )
+
         }
     },
     created () {
         this.approvals = [
             {
+                uuid: crypto.randomUUID(),
                 id: 1,
                 garageName: "dave's",
                 approvalType: "NARG",
@@ -80,6 +93,7 @@ export default {
                 endDate: "2022-01-01"
             },
             {
+                uuid: crypto.randomUUID(),
                 id: 2,
                 garageName: "hazel's",
                 approvalType: "AVANT",

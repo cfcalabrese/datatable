@@ -3,8 +3,8 @@
     <ApprovalItem 
         :key="approval.id" v-for="approval in Approvals"
         :Approval="approval" 
-        @delete-row="$emit('delete-row', approval.id, approval.approvalType, approval.startDate)"
-        @edit-row="$emit('edit-row')"
+        @delete-row="$emit('delete-row', approval.uuid)"
+        @edit-row="submitChange"
     />
     <!-- </tr> -->
 </template>
@@ -18,6 +18,11 @@ export default {
     },
     props: {
         Approvals: Array
+    },
+    methods: {
+        submitChange (editedRow) {
+            this.$emit('edit-row', editedRow)
+        }
     },
     emits: ['delete-row', 'edit-row']
 }

@@ -47,6 +47,7 @@ export default {
     name: 'NewRow',
     data () {
         return {
+            uuid: '',
             id: '',
             garageName: '',
             approvalType: '',
@@ -65,6 +66,7 @@ export default {
             }
 
             const newRow = {
+                uuid: crypto.randomUUID(),
                 id: this.id,
                 garageName: this.garageName,
                 approvalType: this.approvalType,
