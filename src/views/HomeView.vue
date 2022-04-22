@@ -1,17 +1,15 @@
 <template>
-  <div class="container">
+  <div class="rounded-lg m-6">
     <DataTable/>
     <br>
-    <!-- <SubmitButton /> -->
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import DataTable from '@/components/DataTable'
-import NewRowButton from '../components/NewRowButton'
-import SubmitButton from '../components/SubmitButton'
-import NewRow from '../components/NewRow'
+import ButtonItem from '@/components/ButtonItem'
+import NewRow from '@/components/NewRow'
 
 export default {
   name: 'HomeView',
@@ -22,8 +20,7 @@ export default {
   },
   components: {
     DataTable,
-    NewRowButton,
-    SubmitButton,
+    ButtonItem,
     NewRow
   },
   methods: {

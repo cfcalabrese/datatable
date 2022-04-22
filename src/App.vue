@@ -1,9 +1,24 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view />
+  <body class='bg-slate-900 h-screen pt-5 overflow-auto w-full'>
+    <div class="grid grid-cols-3">
+      <div class="ml-2 p-5 col-span-2">
+        <img 
+          src="@/assets/esure_No_R_Blue.png"
+          alt="esure-logo"
+          width="100"
+          height="auto"
+          class=""
+        >
+      </div>
+      <div class="col-span-1 bg-radial-gradient from-slate-700 via-slate-900 to-slate-900 rounded-full mr-6 flex justify-center items-center">
+        <nav class="text-white font-bold">
+          <router-link to="/">Home</router-link> |
+          <router-link to="/about">About</router-link>
+        </nav>
+      </div>
+    </div>
+    <router-view />
+  </body>
 </template>
 
 <style>
@@ -15,15 +30,5 @@
 }
 body {
   font-family: 'mukta', sans-serif;
-}
-.container {
-  max-width: 1800px;
-  margin: 30px auto;
-  overflow-y: scroll;
-  min-height: 500px;
-  border: 1px solid steelblue;
-  padding: 30px;
-  border-radius: 5px;
-  align-content: center;
 }
 </style>

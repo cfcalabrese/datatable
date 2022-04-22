@@ -1,69 +1,87 @@
 <template>
-    <tr :class="editable ? 'editable-yes' : ''" @dblclick="editRow">
-        <td v-if="!editable" @click="outputRow(Approval)">{{ Approval.id }}</td>
-        <td v-else>
+    <tr class="hover:bg-gray-600 text-right text-sm" @dblclick="editRow">
+        <td class='px-2 py-1 ' v-if="!editable" @click="outputRow(Approval)">{{ Approval.AUDATEX_SITE_ID }}</td>
+        <td v-else class='tracking-tight overflow-hidden rounded text-right px-2 border border-white  bg-gray-600'>
             <input 
-                type="number" 
-                v-on:keyup.enter="submitChange()"
+                size="1"
+                type="text" 
+                v-on:keyup.enter="submitChange"
+                v-on:keyup.esc="editRow"
                 v-model="editedId"
+                class='overflow-hidden rounded text-right focus:outline-none w-auto bg-gray-600 text-bold text-white'
             >
         </td>
 
-        <td v-if="!editable">{{ Approval.garageName }}</td>
-        <td v-else>
+        <td class="break-all" v-if="!editable">{{ Approval.GARAGE_NAME }}</td>
+        <td v-else class='tracking-tight overflow-hidden rounded border border-white bg-gray-600'>
             <input 
+                size="1"
                 type="text" 
                 v-on:keyup.enter="submitChange" 
+                v-on:keyup.esc="editRow"                
                 v-model="editedGarageName"
+                class='overflow-hidden rounded text-right focus:outline-none w-auto bg-gray-600 text-bold text-white'
             >
         </td>
 
-        <td v-if="!editable">{{ Approval.approvalType }}</td>
-        <td v-else>
+        <td class="" v-if="!editable">{{ Approval.APPROVAL_TYPE }}</td>
+        <td v-else class='tracking-tight overflow-hidden rounded border border-white bg-gray-600'>
             <input 
+                size="1"
                 type="text" 
-                v-on:keyup.enter="submitChange" 
+                v-on:keyup.enter="submitChange"
+                v-on:keyup.esc="editRow"
                 v-model="editedApprovalType"
+                class='overflow-hidden rounded text-right focus:outline-none w-auto bg-gray-600 text-bold text-white'
             >
         </td>
 
-        <td v-if="!editable">{{ Approval.approvalSubType }}</td>
-        <td v-else>
+        <td class="" v-if="!editable">{{ Approval.APPROVAL_SUBTYPE }}</td>
+        <td v-else class='tracking-tight overflow-hidden rounded border border-white bg-gray-600'>
             <input 
+                size="1"
                 type="text" 
-                v-on:keyup.enter="submitChange" 
+                v-on:keyup.enter="submitChange"
+                v-on:keyup.esc="editRow"
                 v-model="editedApprovalSubType"
+                class='overflow-hidden rounded text-right focus:outline-none w-auto bg-gray-600 text-bold text-white'
             >
         </td>
 
-        <td v-if="!editable">{{ Approval.startDate }}</td>
-        <td v-else>
+        <td class="" v-if="!editable">{{ Approval.START_DATE }}</td>
+        <td v-else class='tracking-tight overflow-hidden rounded border border-white bg-gray-600'>
             <input 
+                size="1"
                 type="date" 
-                v-on:keyup.enter="submitChange" 
+                v-on:keyup.enter="submitChange"
+                v-on:keyup.esc="editRow"
                 v-model="editedStartDate"
+                class='tracking-[-0.1em] overflow-hidden rounded text-right focus:outline-none w-auto bg-gray-600 text-bold text-white'
             >
         </td>
 
-        <td v-if="!editable">{{ Approval.endDate }}</td>
-        <td v-else> 
+        <td class="" v-if="!editable">{{ Approval.END_DATE }}</td>
+        <td v-else class='tracking-tight overflow-hidden rounded border border-white bg-gray-600'> 
             <input 
+                size="1"
                 type="date" 
-                v-on:keyup.enter="submitChange" 
+                v-on:keyup.enter="submitChange"
+                v-on:keyup.esc="editRow"
                 v-model="editedEndDate"
+                class='tracking-[-0.1em] overflow-hidden rounded text-right focus:outline-none max-w-1/6 w-auto bg-gray-600 text-bold text-white'
             >
         </td>
 
-        <td contenteditable="false">
+        <td :class="editable ? 'py-1 bg-gray-600' : 'py-1 pl-2'">
             <i 
-                :class="editable ? 'fas fa-pen-to-square edit-on' : 'fas fa-pen-to-square'"
+                class="fas fa-pen-to-square text-white cursor-pointer"
                 @click="editRow"
             />
         </td>
-        <td contenteditable="false">
+        <td :class="editable ? 'bg-gray-600 py-1 pr-2' : 'py-1 pr-2'">
             <i 
-                class="fas fa-times" 
-                @click="$emit('delete-row', Approval.uuid)"
+                class="fas fa-times cursor-pointer text-red-600" 
+                @click="$emit('delete-row', Approval.UUID)"
             />
         </td>
     </tr>
@@ -78,13 +96,13 @@ export default {
     data () {
         return {
             editable: false,
-            uuid: this.Approval.uuid,
-            editedId: this.Approval.id,
-            editedGarageName: this.Approval.garageName,
-            editedApprovalType: this.Approval.approvalType,
-            editedApprovalSubType: this.Approval.approvalSubType,
-            editedStartDate: this.Approval.startDate,
-            editedEndDate: this.Approval.endDate
+            uuid: this.Approval.UUID,
+            editedId: this.Approval.AUDATEX_SITE_ID,
+            editedGarageName: this.Approval.GARAGE_NAME,
+            editedApprovalType: this.Approval.APPROVAL_TYPE,
+            editedApprovalSubType: this.Approval.APPROVAL_SUBTYPE,
+            editedStartDate: this.Approval.START_DATE,
+            editedEndDate: this.Approval.END_DATE
         }
     },
     methods: {
@@ -98,7 +116,7 @@ export default {
                 garageName: this.editedGarageName,
                 approvalType: this.editedApprovalType,
                 approvalSubType: this.editedApprovalSubType,
-                startdate: this.editedStartDate,
+                startDate: this.editedStartDate,
                 endDate: this.editedEndDate
             }
 
@@ -112,22 +130,3 @@ export default {
     emits: ['delete-row', 'edit-row']
 }
 </script>
-
-<style>
-    .fas.fa-times {
-        color: red;
-        cursor: pointer;
-    }
-    .fas.fa-pen-to-square{
-        cursor: pointer;
-    }
-    .fas.fa-pen-to-square.edit-on {
-        color: green;
-    }
-    .editable-yes {
-        background: lightgray;
-        outline-width: 1px;
-        outline-color: darkgrey;
-        outline-style:ridge;
-    }
-</style>
